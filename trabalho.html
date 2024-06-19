@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trabalho Web - Concessionária</title>
+    <!--IMPORTANDO FONTE E ICONES-->
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!--CSS-->
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        box-sizing: border-box;
+        text-decoration: none;
+        font-family: "Outfit", sans-serif;
+        scroll-behavior: smooth;
+      }
+      :root {
+        --bg-color: #fff;
+        --text-color: #22100d;
+        --second-color: #eef1fb;
+        --main-color: #405ff2;
+        --on-hover: #253896;
+
+        --big-font: 3.8rem;
+        --h2-font: 2.6rem;
+        --p-font: 1.1rem;
+
+        --transition: all 0.4s esase-in-out;
+      }
+
+      body {
+        background-color: var(--bg-color);
+        color: var(--text-color);
+      }
+
+      header {
+        position: fixed;
+        width: 100%;
+        top: 0;
+        right: 0;
+        z-index: 10000;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 23px 13%;
+        background-color: transparent;
+        transition: var(--transition);
+      }
+
+      .logo img {
+        width: 160px;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .navbar {
+        display: flex;
+      }
+
+      .navbar a {
+        color: var(--text-color);
+        font-size: var(--p-font);
+        font-weight: 500;
+        padding: 10px 22px;
+        transition: var(--transition);
+      }
+
+      .navbar a:hover {
+        color: var(--main-color);
+      }
+
+      .header-icons {
+        display: flex;
+        align-items: center;
+      }
+
+      .header-icons i {
+        margin-left: 10px;
+        font-size: 22px;
+        color: var(--text-color);
+        margin-right: 15px;
+        transition: var(--transition);
+      }
+
+      .header-icons i:hover {
+        transform: scale(1.1);
+        color: var(--main-color);
+      }
+
+      #menu-icon {
+        font-size: 34px;
+        color: var(--text-color);
+        cursor: pointer;
+        z-index: 10001;
+        display: none;
+      }
+
+      header.sticky {
+        background-color: var(--bg-color);
+        padding: 12px 13%;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      }
+
+      .home {
+        background-color: var(--second-color);
+        position: relative;
+        height: 100vh;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .home-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 150px;
+      }
+
+      .home-text {
+        text-align: center;
+        padding-bottom: 80px;
+      }
+
+      .home-text p {
+        font-size: 16px;
+        color: var(--main-color);
+        font-weight: 500;
+        margin-bottom: 5px;
+      }
+
+      .home-text h1 {
+        font-size: var(--big-font);
+      }
+
+      form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        border-radius: 50px;
+        flex-wrap: wrap;
+        background-color: var(--bg-color);
+      }
+
+      form div {
+        margin: 0 10px;
+      }
+
+      form label {
+        font-weight: 700;
+        color: #333;
+      }
+
+      form select,
+      form input[type="number"] {
+        padding: 10px;
+        margin-top: 5px;
+        border: none;
+        border-radius: 10px;
+      }
+
+      form button {
+        padding: 10px 20px;
+        margin-top: 5px;
+        border: none;
+        border-radius: 50px;
+        background-color: var(--main-color);
+        color: var(--bg-color);
+        cursor: pointer;
+        transition: var(--transition);
+      }
+
+      form button:hover {
+        background-color: var(--on-hover);
+      }
+
+      .home-img {
+        margin-top: 20px;
+      }
+
+      .home-img img {
+        max-width: 100%;
+      }
+
+      .container {
+        padding-left: 13%;
+        padding-right: 13%;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, auto));
+        gap: 1.5rem;
+        align-items: center;
+        cursor: pointer;
+      }
+
+      .tipos {
+        margin-top: 70px;
+        font-size: var(--h2-font);
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .container-box {
+        display: flex;
+        align-items: center;
+        display: block;
+        gap: 1rem;
+        border: 1px solid #dce4fd;
+        border-radius: 20px;
+        padding: 20px 30px;
+        transition: var(--transition);
+      }
+      .container-box:hover {
+        background-color: var(--second-color);
+        transform: translateY(-10px);
+      }
+
+      .center-text {
+        text-align: center;
+      }
+
+      .center-text h5 {
+        color: var(--main-color);
+        letter-spacing: 1px;
+      }
+
+      .center-text h2 {
+        font-size: var(--h2-font);
+      }
+
+      .categorias,
+      .shop {
+        margin-top: 120px;
+        padding-left: 13%;
+        padding-right: 13%;
+      }
+
+      .categories-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, auto));
+        gap: 1.5rem;
+        align-items: center;
+        margin-top: 3rem;
+        cursor: pointer;
+      }
+
+      .box {
+        border: 1px solid #dce4fd;
+        border-radius: 20px;
+        padding: 20px 30px;
+        transition: var(--transition);
+      }
+
+      .box:hover {
+        background-color: var(--second-color);
+        transform: translateY(-10px);
+      }
+
+      .box img {
+        height: auto;
+      }
+
+      .box h3:hover {
+        color: var(--main-color);
+      }
+
+      .shop-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(400px, auto));
+        gap: 2rem;
+        align-items: center;
+        margin-top: 3rem;
+        cursor: pointer;
+        border-radius: 15px;
+      }
+
+      .row {
+        background-color: rgb(26, 26, 26);
+        color: var(--bg-color);
+        padding: 0px 0px 10px 0px;
+        border-radius: 20px;
+        overflow: hidden;
+        transition: var(--transition);
+      }
+      .row:hover {
+        transform: translateY(-10px);
+      }
+      .row img {
+        object-fit: cover;
+        border-radius: 15px 15px 0px 0px;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .shop-text {
+        padding: 35px 20px;
+      }
+      .shop-text h5 {
+        font-size: 20px;
+        font-weight: 700;
+      }
+      .shop-text h3 {
+        font-size: 20px;
+        font-weight: 600;
+        margin: 15px 0 15px;
+        transition: var(--transition);
+      }
+      .shop-text h3:hover {
+        text-decoration: underline;
+      }
+      .view-datails-link {
+        display: block;
+        color: var(--bg-color);
+        text-decoration: none;
+        margin-top: 10px;
+        transition: var(--transition);
+      }
+
+      .view-datails-link:hover {
+        text-decoration: underline;
+      }
+
+      footer {
+        background-color: var(--second-color);
+        color: var(--bg-color);
+        margin-top: 100px;
+        padding: 80px 13%;
+      }
+
+      .main-contact {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(170px, auto));
+        gap: 2rem;
+      }
+
+      .contact li {
+        margin-bottom: 10px;
+      }
+
+      .contact-content a {
+        font-size: 16px;
+        color: var(--text-color);
+        transition: var(--transition);
+      }
+    </style>
+  </head>
+  <body>
+    <!--header-->
+    <header>
+      <a href="#" class="logo"><img src="Images/logo.png" /></a>
+      <ul class="navbar">
+        <li><a href="#home">Início</a></li>
+        <li><a href="#categorias">Categorias</a></li>
+        <li><a href="#shop">Comprar</a></li>
+      </ul>
+
+      <div class="header-icons">
+        <a href="cadastro.html"><i class="bx bxs-user"></i></a>
+        <a href="#"><i class="bx bxs-cart"></i></a>
+        <div class="bx bx-menu-alt-right" id="menu-icon"></div>
+      </div>
+    </header>
+
+    <!--SEÇÃO DE INÍCIO-->
+    <section class="home" id="home">
+      <div class="home-content">
+        <div class="home-text">
+          <p>Carros a venda perto de você</p>
+          <h1>Encontre o seu carro dos sonhos!</h1>
+        </div>
+
+        <form id="carSearchForm">
+          <div>
+            <label for="make">Marca:</label>
+            <select id="make" onchange="showYears()">
+              <option value="" disabled selected>Selecione a marca</option>
+              <option value="audi">Audi</option>
+              <option value="bentley">Bentley</option>
+              <option value="bmw">Bmw</option>
+              <option value="ford">Ford</option>
+              <option value="benz">Mecedes</option>
+              <option value="nissan">Nissan</option>
+              <option value="peugeot">Peugeot</option>
+              <option value="toyota">Toyota</option>
+              <option value="honda">Honda</option>
+              <option value="volkswagen">Volkswagen</option>
+            </select>
+          </div>
+
+          <div id="years" class="hidden">
+            <label for="year">Ano</label>
+            <select id="year">
+              <option value="" disabled selected>Selecione o ano</option>
+              <option value="2015">2015</option>
+              <option value="2016">2016</option>
+              <option value="2017">2017</option>
+              <option value="2018">2018</option>
+              <option value="2019">2019</option>
+              <option value="2020">2020</option>
+              <option value="2021">2021</option>
+              <option value="2022">2022</option>
+              <option value="2023">2023</option>
+              <option value="2021">2024</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="valor">Preços até</label>
+            <input type="number" id="valor" placeholder="Digite o valor" />
+          </div>
+          <button type="submit" onclick="searchCars()">Buscar</button>
+        </form>
+
+        <div class="home-img">
+          <img src="Images/home1.png" alt="" />
+        </div>
+      </div>
+    </section>
+
+    <!--CATEGORIAS-->
+    <h2 class="tipos">Pesquisar por Tipo</h2>
+    <section class="container">
+      <div class="container-box">
+        <div class="container-img">
+          <img src="Images/SUV.png" width="70px" />
+        </div>
+        <div class="container-text">
+          <p>SUV</p>
+        </div>
+      </div>
+
+      <div class="container-box">
+        <div class="container-img">
+          <img src="Images/sedan.png" width="70px" />
+        </div>
+        <div class="container-text">
+          <p>SEDAN</p>
+        </div>
+      </div>
+
+      <div class="container-box">
+        <div class="container-img">
+          <img src="Images/Coupe.png" width="70px" />
+        </div>
+        <div class="container-text">
+          <p>COUPE</p>
+        </div>
+      </div>
+
+      <div class="container-box">
+        <div class="container-img">
+          <img src="Images/Convertible.png" width="70px" />
+        </div>
+        <div class="container-text">
+          <p>CONVERSÍVEL</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="categorias" id="categorias">
+      <div class="center-text">
+        <h5>Mais populares</h5>
+        <h2>Carros mais vendidos</h2>
+      </div>
+
+      <div class="categories-content">
+        <div class="box">
+          <img src="Images/toyota.png" width="100px" />
+          <h3>Toyota</h3>
+          <p>12.1k Vendas</p>
+        </div>
+
+        <div class="box">
+          <img src="Images/Honda.png" width="100px" />
+          <h3>Honda</h3>
+          <p>9.2k Vendas</p>
+        </div>
+
+        <div class="box">
+          <img src="Images/VW.png" width="100px" />
+          <h3>Volkswagen</h3>
+          <p>7.1k Vendas</p>
+        </div>
+
+        <div class="box">
+          <img src="Images/Benz.png" width="100px" />
+          <h3>Mercedes</h3>
+          <p>6.5k Vendas</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="shop" id="shop">
+      <div class="center-text">
+        <h5>Comprar</h5>
+        <h2>Carros zero</h2>
+      </div>
+
+      <div class="shop-content">
+        <div class="row">
+          <img src="Images/car1.jpg" alt="" />
+          <div class="shop-text">
+            <h5>R$123.000,00</h5>
+            <h3>Toyota Camry</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed
+              repudiandae ipsam
+            </p>
+            <a href="#" class="view-datails-link">Ver detalhes</a>
+          </div>
+        </div>
+        <div class="row">
+          <img src="Images/car2.jpg" alt="" />
+          <div class="shop-text">
+            <h5>R$123.000,00</h5>
+            <h3>Toyota Camry</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed
+              repudiandae ipsam
+            </p>
+            <a href="#" class="view-datails-link">Ver detalhes</a>
+          </div>
+        </div>
+        <div class="row">
+          <img src="Images/car3.jpg" alt="" />
+          <div class="shop-text">
+            <h5>R$123.000,00</h5>
+            <h3>Toyota Camry</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed
+              repudiandae ipsam
+            </p>
+            <a href="#" class="view-datails-link">Ver detalhes</a>
+          </div>
+        </div>
+        <div class="row">
+          <img src="Images/car4.jpg" alt="" />
+          <div class="shop-text">
+            <h5>R$123.000,00</h5>
+            <h3>Toyota Camry</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed
+              repudiandae ipsam
+            </p>
+            <a href="#" class="view-datails-link">Ver detalhes</a>
+          </div>
+        </div>
+        <div class="row">
+          <img src="Images/car5.jpg" alt="" />
+          <div class="shop-text">
+            <h5>R$123.000,00</h5>
+            <h3>Toyota Camry</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed
+              repudiandae ipsam
+            </p>
+            <a href="#" class="view-datails-link">Ver detalhes</a>
+          </div>
+        </div>
+        <div class="row">
+          <img src="Images/car6.jpg" alt="" />
+          <div class="shop-text">
+            <h5>R$123.000,00</h5>
+            <h3>Toyota Camry</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed
+              repudiandae ipsam
+            </p>
+            <a href="#" class="view-datails-link">Ver detalhes</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="main-contact">
+        <div class="contact-content">
+          <li><a href="#">Contate-nos</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Termos</a></li>
+          <li><a href="#">Serviços</a></li>
+        </div>
+
+        <div class="contact-content">
+          <li><a href="#">Central de ajuda</a></li>
+          <li><a href="#">Chat</a></li>
+          <li><a href="#">Localização</a></li>
+        </div>
+
+        <div class="contact-content">
+          <li><a href="#">Segunda a sexta - 9 as 19h</a></li>
+        </div>
+
+        <div class="contact-content">
+          <li><a href="#">Contate-nos</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Termos</a></li>
+          <li><a href="#">Serviços</a></li>
+        </div>
+      </div>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3750.4721413615907!2d-43.92385392465095!3d-19.946636938827073!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa699b6e137cb5d%3A0xc15ac1714a42cec9!2sUniversidade%20FUMEC%20-%20Virtual!5e0!3m2!1spt-BR!2sbr!4v1718740348632!5m2!1spt-BR!2sbr" width="200" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </footer>
+  </body>
+  <script>
+    // JS
+    const header = document.querySelector("header");
+
+    window.addEventListener("scroll", function () {
+      header.classList.toggle("sticky", window.scrollY > 0);
+    });
+  </script>
+</html>
